@@ -1,8 +1,8 @@
 import sys
 from PyQt5.uic import loadUiType
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.Qsci import *
+from PyQt5.QtWidgets import QMainWindow, QApplication, QStyleFactory
+from PyQt5.QtGui import QFont
+from PyQt5.Qsci import QsciLexerPython, QsciScintilla
 
 # specifying the location of the Design
 form_ui = 'Design/Editor.ui'
