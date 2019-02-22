@@ -20,15 +20,19 @@ class Editor(QMainWindow, Ui_MainWindow):
         self.setFixedSize(800, 800)
         # adding the the custom editor of QsciScintilla
         self.editor = QsciScintilla()
+        self.editor.setGeometry(25, 25, 750, 750)
         # adding text to the ditro
-        self.editor.append("Welcome to IDERROR, this is just a test!!")
-        # this is i am not sure yet but its for the syntax
-        self.editor.setLexer(None)
+        self.editor.append("print('Hello World!') # this is just a test")
+        # this is i am not sure yet but i think its for the syntax
+        self.python_syntax = QsciLexerPython()
+        self.editor.setLexer(self.python_syntax)
         self.editor.setUtf8(True)  # Set encoding to UTF-8
+        # setting editor position
+
         # adding font
         self.Font = QFont()
         # adding text size
-        self.Font.setPointSize(14)
+        self.Font.setPointSize(16)
         # applying font
         self.editor.setFont(self.Font)  # Will be overridden by lexer!
         # adding the editor to te form
