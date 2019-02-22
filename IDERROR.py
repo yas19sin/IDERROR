@@ -1,28 +1,27 @@
 import sys
-from PyQt5.uic import loadUi
+from PyQt5.uic import loadUiType
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.Qsci import *
 
 # specifying the location of the Design
 form_ui = 'Design/Editor.ui'
+Ui_MainWindow, QtBaseClass = loadUiType(form_ui)
 
 
-class Editor(QMainWindow):
+class Editor(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(Editor, self).__init__(parent)
-        # Loading in the Design
-        self.ui = loadUi(form_ui)
+        self.setupUi(self)
 
     # Setting up the window form
     def Setup(self):
         # Setting the size to be fixed
-        self.ui.setFixedSize(800, 800)
+        self.setFixedSize(800, 800)
         # adding the the custom editor of QsciScintilla
         self.editor = QsciScintilla()
         # adding text to the ditro
-        self.editor.setText("Hello\n")
-        self.editor.append("world")
+        self.editor.append("Welcome to IDERROR, this is just a test!!")
         # this is i am not sure yet but its for the syntax
         self.editor.setLexer(None)
         self.editor.setUtf8(True)  # Set encoding to UTF-8
@@ -32,12 +31,11 @@ class Editor(QMainWindow):
         self.Font.setPointSize(14)
         # applying font
         self.editor.setFont(self.Font)  # Will be overridden by lexer!
-        # adding the editor to te form TODO: figure out how to add the editor to the form here
-        self.layout = self.ui.centralWidget().layout()
-        #self.ui.addWidget(self.editor)
+        # adding the editor to te form
+        self.layout().addWidget(self.editor)
 
         # showing ui
-        self.ui.show()
+        self.show()
 
 
 if __name__ == '__main__':
