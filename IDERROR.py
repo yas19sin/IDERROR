@@ -1,7 +1,6 @@
 import sys
 from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.Qsci import *
 
@@ -23,7 +22,11 @@ class Editor(QMainWindow):
         self.Font = QFont()
         self.Font.setPointSize(14)
         self.editor.setFont(self.Font)  # Will be overridden by lexer!
-        self.ui.addWidget(self.editor)
+        self.layout = self.ui.centralWidget().layout()
+        #self.ui.addWidget(self.editor)
+
+        # show ui
+        self.ui.show()
 
 
 if __name__ == '__main__':
@@ -31,6 +34,5 @@ if __name__ == '__main__':
     QApplication.setStyle(QStyleFactory.create('Fusion'))
     myGUI = Editor()
     myGUI.Setup()
-    myGUI.show()
 
     sys.exit(app.exec_())
